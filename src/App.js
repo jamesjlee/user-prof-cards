@@ -36,13 +36,28 @@ function App() {
     );
   };
 
+  const [canEdit, setCanEdit] = useState({});
+
+  const editUser = (event, index) => {
+    setCanEdit({
+      index: index,
+      editable: true,
+    });
+  };
+
   return (
     <Container>
       {users &&
         users.map((user, index) => {
           return (
             <div key={index}>
-              <UserProf user={user} />
+              <UserProf
+                user={user}
+                editable={canEdit.index === index && canEdit.editable}
+              />
+              <StyledButton onClick={(event) => editUser(event, index)}>
+                Edit User
+              </StyledButton>
             </div>
           );
         })}

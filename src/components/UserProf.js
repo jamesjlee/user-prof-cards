@@ -28,25 +28,18 @@ const StyledButton = styled.button`
   padding: 0.25em 1em;
 `;
 
-const UserProf = ({ user }) => {
-  const [canEdit, setCanEdit] = useState(false);
-
-  const editUser = () => {
-    setCanEdit(true);
-  };
-
+const UserProf = ({ user, editable }) => {
   return (
     <Card>
       <Avatar firstName={user.firstName} lastName={user.lastName} />
       <SideInfo
-        editable={canEdit}
+        editable={editable}
         firstName={user.firstName}
         lastName={user.lastName}
         email={user.email}
         address={user.address}
         phone={user.phone}
       />
-      <StyledButton onClick={() => editUser()}>Edit User</StyledButton>
     </Card>
   );
 };
